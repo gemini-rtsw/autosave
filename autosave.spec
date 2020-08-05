@@ -84,6 +84,10 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Wed Aug 05 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-5.10.0.202008050537c8a00fa
+- Release tag enriched with hour and minute (%%H%%M) to be able to build
+  several RPMs a day without messing up the repo (fkraemer@gemini.edu)
+
 * Wed Jul 22 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-5.10.0.20200722203308c
 - finally the right Release tag (fkraemer@gemini.edu)
 
