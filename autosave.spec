@@ -1,7 +1,7 @@
 %define _prefix /gem_base/epics/support
 %define name autosave
 %define version 3.15.8
-%define release 5.10.0
+%define release 5.10.1
 %define repository gemdev
 %define debug_package %{nil}
 %define arch %(uname -m)
