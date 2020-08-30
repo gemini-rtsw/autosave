@@ -84,6 +84,14 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Sun Aug 30 2020 Felix Kraemer <fkraemer@gemini.edu> 3.15.8-5.10.1.202008301241c21a199
+- specfile edited for Release version to be changed to 5.10.1
+  (fkraemer@gemini.edu)
+- a merge conflict resolution leftover (fkraemer@gemini.edu)
+- merge in vendor code (i.e. upstream)
+- Release tag enriched with hour and minute (%%H%%M) to be able to build
+  several RPMs a day without messing up the repo (fkraemer@gemini.edu)
+
 * Wed Jul 22 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-5.10.0.20200722203308c
 - finally the right Release tag (fkraemer@gemini.edu)
 
