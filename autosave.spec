@@ -1,6 +1,5 @@
 %define _prefix /gem_base/epics/support
 %define name autosave
-%define version 3.15.8
 %define release 5.10.0
 %define repository gemdev
 %define debug_package %{nil}
@@ -20,8 +19,8 @@
 
 Summary: %{name} Package, a module for EPICS base
 Name: %{name}
-Version: %{version}
-Release: %release.%(date +"%Y%m%d%H%M")%{checkout}%{?dist}
+Version: 5.10.0
+Release: 1%{?dist}
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
