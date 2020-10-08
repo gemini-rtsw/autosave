@@ -20,7 +20,7 @@
 Summary: %{name} Package, a module for EPICS base
 Name: %{name}
 Version: 5.10.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
@@ -83,6 +83,9 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Thu Oct 08 2020 fkraemer <fkraemer@gemini.edu> 5.10.0-2
+- applied new versaion/release scheme and new yum repository structure
+
 * Wed Aug 05 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-5.10.0.202008050537c8a00fa
 - Release tag enriched with hour and minute (%%H%%M) to be able to build
   several RPMs a day without messing up the repo (fkraemer@gemini.edu)
