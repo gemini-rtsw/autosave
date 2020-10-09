@@ -1,6 +1,5 @@
 %define _prefix /gem_base/epics/support
 %define name autosave
-%define release 5.10.0
 %define repository gemdev
 %define debug_package %{nil}
 %define arch %(uname -m)
@@ -83,10 +82,21 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+<<<<<<< HEAD
 * Thu Oct 08 2020 fkraemer <fkraemer@gemini.edu> 5.10.0-2
 - applied new versaion/release scheme and new yum repository structure
 
+=======
+<<<<<<< HEAD
+>>>>>>> master
 * Wed Aug 05 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-5.10.0.202008050537c8a00fa
+=======
+* Sun Aug 30 2020 Felix Kraemer <fkraemer@gemini.edu> 3.15.8-5.10.1.202008301241c21a199
+- specfile edited for Release version to be changed to 5.10.1
+  (fkraemer@gemini.edu)
+- a merge conflict resolution leftover (fkraemer@gemini.edu)
+- merge in vendor code (i.e. upstream)
+>>>>>>> 2f2ed3cfdab7c49fbfbe3e2a06282ffb0e046c19
 - Release tag enriched with hour and minute (%%H%%M) to be able to build
   several RPMs a day without messing up the repo (fkraemer@gemini.edu)
 
