@@ -19,7 +19,7 @@
 Summary: %{name} Package, a module for EPICS base
 Name: %{name}
 Version: 5.10.0
-Release: 2%{?dist}
+Release: 4%{?dist}
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
@@ -82,6 +82,12 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Fri Oct 09 2020 fkraemer <fkraemer@gemini.edu> 5.10.0-4
+merging again, was on wrong branch
+
+* Fri Oct 09 2020 fkraemer <fkraemer@gemini.edu>
+merged vendor code just now
+
 * Thu Oct 08 2020 fkraemer <fkraemer@gemini.edu> 5.10.0-2
 - applied new version/release scheme and new yum repository structure
 
