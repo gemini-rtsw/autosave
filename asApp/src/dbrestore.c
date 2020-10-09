@@ -910,6 +910,9 @@ int reboot_restore(char *filename, initHookState init_state)
 			}
 			continue;
 		}
+		if (strncmp(PVname, "<END>", 5) == 0) {
+			break;
+		}
 		if (PVname[0] == '#') {
 			/* user must have edited the file manually; accept this line as a comment */
 			is_scalar = strncmp(value_string, ARRAY_MARKER, ARRAY_MARKER_LEN);
@@ -1637,7 +1640,12 @@ static void myDbLoadRecordsHook(const char* fname, const char* macro) {
 					}
 				}
 				n = epicsSnprintf(requestFileCmd, MAXSTRING, "file %s %s", requestFileName, macroString);
-				if (n < MAXSTRING) appendToFile(pitem->filename, requestFileCmd);
+				if (n < MAXSTRING) {
+					appendToFile(pitem->filename, requestFileCmd);
+				} else {
+					printf("myDbLoadRecordsHook: Can't include %s; requestFileCmd is too long (n = %i, MAXSTRING = %i)\n", 
+					requestFileName, n, MAXSTRING);
+				}
 			}
 		}
 	}
