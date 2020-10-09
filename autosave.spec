@@ -1,7 +1,5 @@
 %define _prefix /gem_base/epics/support
 %define name autosave
-%define version 3.15.8
-%define release 5.10.1
 %define repository gemdev
 %define debug_package %{nil}
 %define arch %(uname -m)
@@ -20,8 +18,8 @@
 
 Summary: %{name} Package, a module for EPICS base
 Name: %{name}
-Version: %{version}
-Release: %release.%(date +"%Y%m%d%H%M")%{checkout}%{?dist}
+Version: 5.10.0
+Release: 4%{?dist}
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
@@ -84,11 +82,22 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Fri Oct 09 2020 fkraemer <fkraemer@gemini.edu> 5.10.0-4
+merging again, was on wrong branch
+
+* Fri Oct 09 2020 fkraemer <fkraemer@gemini.edu>
+merged vendor code just now
+
+* Thu Oct 08 2020 fkraemer <fkraemer@gemini.edu> 5.10.0-2
+- applied new version/release scheme and new yum repository structure
+
 * Sun Aug 30 2020 Felix Kraemer <fkraemer@gemini.edu> 3.15.8-5.10.1.202008301241c21a199
 - specfile edited for Release version to be changed to 5.10.1
   (fkraemer@gemini.edu)
 - a merge conflict resolution leftover (fkraemer@gemini.edu)
 - merge in vendor code (i.e. upstream)
+
+* Wed Aug 05 2020 fkraemer <fkraemer@gemini.edu> 3.15.8-5.10.0.202008050537c8a00fa
 - Release tag enriched with hour and minute (%%H%%M) to be able to build
   several RPMs a day without messing up the repo (fkraemer@gemini.edu)
 
