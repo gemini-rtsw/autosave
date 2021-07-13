@@ -33,4 +33,6 @@
 int mountFileSystem(char *uidhost, char *addr, char *path, char *mntpoint);   /* mount the NFS */
 int dismountFileSystem(char *mntpoint);                           /* dismount the NFS */
 
+extern nfsMount(char *uidhost, char *path, char *mntpoint);
+
 #endif
