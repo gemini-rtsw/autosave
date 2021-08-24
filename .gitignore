@@ -15,3 +15,6 @@ dllPath.bat
 auto_settings.sav*
 auto_positions.sav*
 RELEASE.local
+/.tito/releasers.conf
+/configure/RELEASE.local
+/configure/CONFIG_SITE.local
