@@ -19,7 +19,7 @@
 Summary: %{name} Package, a module for EPICS base
 Name: %{name}
 Version: 5.10.0
-Release: 4%{?dist}
+Release: 5%{?dist}
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
@@ -82,6 +82,10 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Tue Aug 24 2021 Matt Rippa <mrippa@gemini.edu> 5.10.0-5
+- gem-init-project.sh
+- These patches fix #2
+
 * Fri Oct 09 2020 fkraemer <fkraemer@gemini.edu> 5.10.0-4
 merging again, was on wrong branch
 
