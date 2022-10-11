@@ -56,6 +56,8 @@ git submodule update --init --recursive
 
 cp ../configure/* configure/
 
+git apply ../nfsMount.patch
+
 %build
 cd vendor_project
 make distclean uninstall
