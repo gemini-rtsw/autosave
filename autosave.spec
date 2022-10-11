@@ -54,6 +54,8 @@ cd vendor_project
 git checkout %{vendor_ref}
 git submodule update --init --recursive
 
+cp ../configure/* configure/
+
 %build
 cd vendor_project
 make distclean uninstall
