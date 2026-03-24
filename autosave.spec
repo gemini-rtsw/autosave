@@ -43,7 +43,7 @@ Summary: %{name} Package, a module for EPICS base
 Name: %{name}
 # Version corresponds to the packaged upstream vendor baseline tag.
 Version: 6.0.0
-Release: 0%{?dist}
+Release: 0.1.rc1
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
@@ -127,3 +127,7 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Mon Mar 23 2026 Matt Rippa <matt.rippa@noirlab.edu> 6.0.0-0.1.rc1
+- SYSCO-922: Tolerate upstream nfsMount patch
+- SYSCO-922: Fix CI submodule metadata
+
