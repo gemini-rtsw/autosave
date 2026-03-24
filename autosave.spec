@@ -80,7 +80,13 @@ git submodule update --init --recursive
 cp ../configure/* configure/
 rm -f configure/*.local
 
+# Apply the origin-side RTEMS patch only when the selected vendor baseline
+# still needs it. Upstream R6-0 already contains these changes.
+if git apply --check ../nfsMount.patch; then
 git apply ../nfsMount.patch
+else
+echo "INFO: nfsMount.patch already present in %{vendor_ref}; skipping"
+fi
 
 make distclean uninstall
 make %{?_smp_mflags}
