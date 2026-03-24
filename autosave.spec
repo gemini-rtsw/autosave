@@ -5,10 +5,28 @@
 %define arch %(uname -m)
 %define checkout %(git log --pretty=format:'%h' -n 1) 
 
+# These defines need to be adjusted to point to the git ref
+# that is to be built
+
+# Tip 1: git remote add vendor https://github.com/epics-modules/autosave.git
+# to your development sandbox to easily track both vendor/upstream and
+# origin/gemini.
+#
+# Tip 2: git ls-remote --tags vendor to see sha and refs/tags side-by-side
+#
 # vendor/upstream git project
 %define vendor_project https://github.com/epics-modules/autosave.git
-# vendor git ref (tag or commit hash). Please keep in sync with 'Version', if possible!
-%define vendor_ref R5-10-2
+#
+# Policy:
+# - prefer the latest upstream vendor tag for packaged releases
+# - only follow vendor/master when we intentionally package an untagged vendor head
+#
+# Historical note:
+# - unstable/2024q3 used vendor tag R5-10-2, mapped to package version 5.10.2
+#
+# Current packaged vendor baseline:
+# - latest upstream vendor tag is R6-0, mapped to SemVer package version 6.0.0
+%define vendor_ref R6-0
 
 #These global defines are added to prevent stripping
 # symbols on vxWorks cross-compiled code
@@ -23,7 +41,8 @@
 
 Summary: %{name} Package, a module for EPICS base
 Name: %{name}
-Version: 5.10.2
+# Version corresponds to the packaged upstream vendor baseline tag.
+Version: 6.0.0
 Release: 0%{?dist}
 License: EPICS Open License
 Group: Applications/Engineering
@@ -49,21 +68,25 @@ This is the module %{name}.
 
 %prep
 %setup -q 
+
+%build
+# get vendor code
 git clone --recurse-submodules %{vendor_project} vendor_project
 cd vendor_project
 git checkout %{vendor_ref}
 git submodule update --init --recursive
 
+# apply Gemini-specific configuration
 cp ../configure/* configure/
+rm -f configure/*.local
 
 git apply ../nfsMount.patch
 
-%build
-cd vendor_project
 make distclean uninstall
-make
+make %{?_smp_mflags}
 
 %install
+# cd into the directory containing the vendor sources
 cd vendor_project
 
 export DONT_STRIP=1
