@@ -3,7 +3,7 @@
 %define repository gemdev
 %define debug_package %{nil}
 %define arch %(uname -m)
-%define checkout %(git log --pretty=format:'%h' -n 1) 
+%define checkout %(if [ -n "$GIT_HASH" ]; then echo "$GIT_HASH"; else git rev-parse --short HEAD 2>/dev/null || echo nogit; fi)
 
 # vendor/upstream git project
 %define vendor_project https://github.com/epics-modules/autosave.git
@@ -24,7 +24,7 @@
 Summary: %{name} Package, a module for EPICS base
 Name: %{name}
 Version: 5.10.2
-Release: 0%{?dist}
+Release: 0.git.%{checkout}%{?dist}
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
